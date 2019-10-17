@@ -1,8 +1,8 @@
-#ifdef __linux__
-    #include <SDL2/SDL.h>
-#elif _WIN32
-    #include <SDL.h>
-#endif
+/*This source code copyrighted by Lazy Foo' Productions (2004-2019)
+and may not be redistributed without written permission.*/
+
+//Using SDL and standard IO
+#include <SDL2/SDL.h>
 #include <stdio.h>
 
 //Screen dimension constants
