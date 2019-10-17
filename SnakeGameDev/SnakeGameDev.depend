@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1571349957 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/main.cpp
+	<iostream>
+	"Game.h"
+
+1571349311 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.h
+
