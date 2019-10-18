@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "algorithm": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "memory": "cpp",
+        "queue": "cpp",
+        "utility": "cpp",
+        "vector": "cpp"
+    }
+}

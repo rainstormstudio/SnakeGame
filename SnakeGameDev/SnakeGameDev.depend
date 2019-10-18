@@ -3,5 +3,17 @@
 	<iostream>
 	"Game.h"
 
-1571349311 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.h
+1571367964 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.h
+	"Graphics.h"
+
+1571368211 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.h
+	<SDL2/SDL.h>
+	<SDL.h>
+	<string>
+
+1571368067 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.cpp
+	"Game.h"
+
+1571368211 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.cpp
+	"Graphics.h"
 
