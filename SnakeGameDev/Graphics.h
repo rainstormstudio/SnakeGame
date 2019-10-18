@@ -1,3 +1,4 @@
+#pragma once
 #ifdef __linux__
     #include <SDL2/SDL.h>
 #elif _WIN32
@@ -11,7 +12,7 @@ public:
     int SCREEN_HEIGHT;
     const char* TITLE;
     SDL_Window* window;
-    SDL_Surface* screenSurface;
+    SDL_Renderer* renderer;
 
     Graphics(std::string title, int initWidth, int initHeight);
     ~Graphics();

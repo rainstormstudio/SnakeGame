@@ -1,12 +1,11 @@
 # depslib dependency file v1.0
-1571349957 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/main.cpp
-	<iostream>
+1571373631 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/main.cpp
 	"Game.h"
 
-1571367964 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.h
+1571371050 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.h
 	"Graphics.h"
 
-1571368211 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.h
+1571412818 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.h
 	<SDL2/SDL.h>
 	<SDL.h>
 	<string>
