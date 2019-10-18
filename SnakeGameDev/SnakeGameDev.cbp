@@ -40,6 +40,8 @@
 		</Linker>
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
+		<Unit filename="GameObject.cpp" />
+		<Unit filename="GameObject.h" />
 		<Unit filename="Graphics.cpp" />
 		<Unit filename="Graphics.h">
 			<Option target="&lt;{~None~}&gt;" />

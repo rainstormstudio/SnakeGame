@@ -6,7 +6,8 @@
         "memory": "cpp",
         "queue": "cpp",
         "utility": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "string": "cpp"
     }, 
     "code-runner.executorMap": {
         "javascript": "node",

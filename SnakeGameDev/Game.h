@@ -1,5 +1,6 @@
 #pragma once
 #include "Graphics.h"
+#include "GameObject.h"
 
 class Game{
 private:
@@ -10,13 +11,11 @@ private:
     bool main_loop;
 
     Graphics* gfx;
+    GameObject* player;
 
-    SDL_Texture* playerTexture;
-    SDL_Rect rect;
-    int temp;
 public:
     Game();
     ~Game();
-    void update(double deltaTime);
-    void render(double deltaTime);
+    void update();
+    void render();
 };

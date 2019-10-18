@@ -24,5 +24,5 @@ public:
     ~Graphics();
     void clear();
     void render();
-    SDL_Texture* loadTexture(std::string fileName, SDL_Renderer* rendererName);
+    static SDL_Texture* loadTexture(std::string fileName, SDL_Renderer* rendererName);
 };

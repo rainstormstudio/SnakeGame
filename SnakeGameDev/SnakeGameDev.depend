@@ -2,10 +2,11 @@
 1571374792 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/main.cpp
 	"Game.h"
 
-1571427609 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.h
+1571431561 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.h
 	"Graphics.h"
+	"GameObject.h"
 
-1571416794 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.h
+1571430444 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_ttf.h>
@@ -16,9 +17,15 @@
 	<SDL_mixer.h>
 	<string>
 
-1571427677 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.cpp
+1571432168 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.cpp
 	"Game.h"
 
 1571416370 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.cpp
 	"Graphics.h"
+
+1571431336 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/GameObject.h
+	"Graphics.h"
+
+1571432630 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/GameObject.cpp
+	"GameObject.h"
 

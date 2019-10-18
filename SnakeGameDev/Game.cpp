@@ -10,19 +10,13 @@ Game::Game(){
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT);
 
+    player = new GameObject("assets/player.png", gfx->renderer, 0, 0, 32, 32, 2);
     main_loop = true;
-    playerTexture = gfx->loadTexture("assets/player.png", gfx->renderer);
-    rect.h = 64;
-    rect.w = 64;
-    rect.x = 0;
-    rect.y = 0;
-    temp = 0;
-
     while (main_loop){
         frameStart = SDL_GetTicks();
 
-        update(0);
-        render(0);
+        update();
+        render();
 
         frameTime = SDL_GetTicks() - frameStart;
         if (frameDelay > frameTime){
@@ -33,13 +27,12 @@ Game::Game(){
 
 Game::~Game(){}
 
-void Game::update(double deltaTime){
-    temp ++;
-    rect.x = temp;
+void Game::update(){
+    player->update();
 }
 
-void Game::render(double deltaTime){
+void Game::render(){
     gfx->clear();
-    SDL_RenderCopy(gfx->renderer, playerTexture, NULL, &rect);
+    player->render();
     gfx->render();
 }
