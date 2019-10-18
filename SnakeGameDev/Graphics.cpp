@@ -21,8 +21,8 @@ Graphics::Graphics(std::string title, int initWidth, int initHeight){
         else{
             renderer = SDL_CreateRenderer(window, -1, 0);
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-            SDL_RenderClear(renderer);
-            SDL_RenderPresent(renderer);
+            clear();
+            render();
         }
     }
 }
@@ -38,4 +38,8 @@ void Graphics::clear(){
 
 void Graphics::render(){
     SDL_RenderPresent(renderer);
+}
+
+SDL_Texture* Graphics::loadTexture(std::string fileName, SDL_Renderer* rendererName){
+    return IMG_LoadTexture(rendererName, fileName.c_str());
 }

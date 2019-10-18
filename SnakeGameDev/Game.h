@@ -6,7 +6,11 @@ private:
     int SCREEN_WIDTH;
     int SCREEN_HEIGHT;
 
+    bool main_loop;
+
     Graphics* gfx;
+
+    SDL_Texture* playerTexture;
 public:
     Game();
     ~Game();

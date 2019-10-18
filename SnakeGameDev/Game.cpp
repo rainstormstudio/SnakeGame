@@ -6,7 +6,8 @@ Game::Game(){
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    bool main_loop = true;
+    main_loop = true;
+    playerTexture = gfx->loadTexture("assets/player.png", gfx->renderer);
     while (main_loop){
 
         update(0);
@@ -17,9 +18,10 @@ Game::Game(){
 Game::~Game(){}
 
 void Game::update(double deltaTime){
-    gfx->render();
+
 }
 
 void Game::render(double deltaTime){
     gfx->clear();
+    gfx->render();
 }
