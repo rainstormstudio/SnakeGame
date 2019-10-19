@@ -12,7 +12,7 @@ Game::Game(){
     keyboard = new Keyboard();
 
     player = new Player("assets/player.png", gfx->renderer,
-                        0, 0, 32, 32, 2, 4);
+                        0, 0, 32, 32, 2, 32);
     main_loop = true;
     while (main_loop){
         frameStart = SDL_GetTicks();
