@@ -20,7 +20,7 @@ Graphics::Graphics(std::string title, int initWidth, int initHeight){
         }
         else{
             renderer = SDL_CreateRenderer(window, -1, 0);
-            SDL_SetRenderDrawColor(renderer, 0, 0, 100, 255);
+            SDL_SetRenderDrawColor(renderer, 0, 50, 100, 255);
             clear();
             render();
         }

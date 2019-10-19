@@ -23,19 +23,19 @@ return keyReleased[key];
 void Keyboard::update(){
     while (SDL_PollEvent(&event)){
         switch(event.type){
-        case SDL_QUIT: 
-            quitSignal = true; 
+        case SDL_QUIT:
+            quitSignal = true;
             break;
-        case SDL_KEYDOWN: 
+        case SDL_KEYDOWN:
             prevKey[event.key.keysym.sym] = keyPressed[event.key.keysym.sym];
             keyPressed[event.key.keysym.sym] = true;
             keyReleased[event.key.keysym.sym] = false;
             break;
-        default:   
+        case SDL_KEYUP:
             prevKey[event.key.keysym.sym] = keyPressed[event.key.keysym.sym];
             keyPressed[event.key.keysym.sym] = false;
             keyReleased[event.key.keysym.sym] = prevKey[event.key.keysym.sym];
-            break;         
+            break;
         }
     }
 }
