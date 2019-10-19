@@ -1,13 +1,19 @@
 #pragma once
+#include <SDL2/SDL.h>
+#define KEY_TOTAL 322
 
 class Keyboard{
 private:
-    bool prevKey[];
-    bool keyPressed[];
-    bool keyReleased[];
+    bool prevKey[KEY_TOTAL];
+    bool keyPressed[KEY_TOTAL];
+    bool keyReleased[KEY_TOTAL];
+    SDL_Event event;
 public:
+    bool quitSignal;
+
     Keyboard();
     ~Keyboard();
-    bool isKeyPressed();
-    bool isKeyReleased();
+    bool isKeyPressed(int key);
+    bool isKeyReleased(int key);
+    void update();
 };

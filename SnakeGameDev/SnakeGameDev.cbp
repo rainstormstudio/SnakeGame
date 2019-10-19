@@ -46,6 +46,8 @@
 		<Unit filename="Graphics.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="Keyboard.cpp" />
+		<Unit filename="Keyboard.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

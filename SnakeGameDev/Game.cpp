@@ -9,6 +9,7 @@ Game::Game(){
     int frameTime;
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT);
+    keyboard = new Keyboard();
 
     player = new GameObject("assets/player.png", gfx->renderer, 0, 0, 32, 32, 2);
     main_loop = true;
@@ -18,16 +19,20 @@ Game::Game(){
         update();
         render();
 
+        if (keyboard->quitSignal) main_loop = false;
+
         frameTime = SDL_GetTicks() - frameStart;
         if (frameDelay > frameTime){
             SDL_Delay(frameDelay - frameTime);
         }
     }
+    printf("the while loop is over");
 }
 
 Game::~Game(){}
 
 void Game::update(){
+    keyboard->update();
     player->update();
 }
 

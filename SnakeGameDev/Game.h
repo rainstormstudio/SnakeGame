@@ -1,5 +1,6 @@
 #pragma once
 #include "Graphics.h"
+#include "Keyboard.h"
 #include "GameObject.h"
 
 class Game{
@@ -11,6 +12,7 @@ private:
     bool main_loop;
 
     Graphics* gfx;
+    Keyboard* keyboard;
     GameObject* player;
 
 public:
