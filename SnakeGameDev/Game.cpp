@@ -11,12 +11,13 @@ Game::Game(){
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT);
     keyboard = new Keyboard();
 
-    player = new GameObject("assets/player.png", gfx->renderer, 0, 0, 32, 32, 2);
+    player = new Player("assets/player.png", gfx->renderer,
+                        0, 0, 32, 32, 2, 1);
     main_loop = true;
     while (main_loop){
         frameStart = SDL_GetTicks();
 
-        update();
+        update(frameTime / 1000.0f);
         render();
 
         if (keyboard->quitSignal) main_loop = false;
@@ -31,9 +32,9 @@ Game::Game(){
 
 Game::~Game(){}
 
-void Game::update(){
+void Game::update(double deltaTime){
     keyboard->update();
-    player->update();
+    player->update(keyboard, deltaTime);
 }
 
 void Game::render(){

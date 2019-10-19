@@ -13,11 +13,11 @@ private:
 
     Graphics* gfx;
     Keyboard* keyboard;
-    GameObject* player;
+    Player* player;
 
 public:
     Game();
     ~Game();
-    void update();
+    void update(double deltaTime);
     void render();
 };
