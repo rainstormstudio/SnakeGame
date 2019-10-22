@@ -2,7 +2,7 @@
 
 Game::Game(){
     SCREEN_WIDTH = 800;
-    SCREEN_HEIGHT = 600;
+    SCREEN_HEIGHT = 640;
     FPS = 60;
     double frameDelay = 1000 / FPS;
     Uint32 frameA;
@@ -12,6 +12,8 @@ Game::Game(){
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT);
     printf("graphics initialized\n");
+    map = new Map(gfx->renderer);
+    printf("map initialized\n");
     keyboard = new Keyboard();
     printf("keyboard initialized\n");
     player = new Player("assets/player.png", gfx->renderer,
@@ -49,6 +51,7 @@ void Game::update(double deltaTime){
 
 void Game::render(){
     gfx->clear();
+    map->drawMap();
     player->render();
     gfx->render();
 }

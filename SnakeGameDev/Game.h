@@ -1,5 +1,6 @@
 #pragma once
 #include "Graphics.h"
+#include "Map.h"
 #include "Keyboard.h"
 #include "GameObject.h"
 
@@ -12,6 +13,7 @@ private:
     bool main_loop;
 
     Graphics* gfx;
+    Map* map;
     Keyboard* keyboard;
     Player* player;
 

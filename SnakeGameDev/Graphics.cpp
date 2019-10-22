@@ -44,3 +44,7 @@ void Graphics::render(){
 SDL_Texture* Graphics::loadTexture(std::string fileName, SDL_Renderer* rendererName){
     return IMG_LoadTexture(rendererName, fileName.c_str());
 }
+
+void Graphics::drawTexture(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect destRect, double angle, SDL_Point center, SDL_RendererFlip flip, SDL_Renderer* rendererName){
+    SDL_RenderCopyEx(rendererName, texture, &srcRect, &destRect, angle, &center, flip);
+}

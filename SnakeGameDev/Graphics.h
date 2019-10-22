@@ -25,4 +25,5 @@ public:
     void clear();
     void render();
     static SDL_Texture* loadTexture(std::string fileName, SDL_Renderer* rendererName);
+    static void drawTexture(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect destRect, double angle, SDL_Point center, SDL_RendererFlip flip, SDL_Renderer* rendererName);
 };
