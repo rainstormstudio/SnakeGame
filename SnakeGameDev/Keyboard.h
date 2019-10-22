@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL2/SDL.h>
-#define KEY_TOTAL 322
+#define KEY_TOTAL 1 << 30
 
 class Keyboard{
 private:
