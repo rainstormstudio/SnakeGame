@@ -11,10 +11,13 @@ Game::Game(){
     Uint32 sleepTime;
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT);
+    printf("graphics initialized\n");
     keyboard = new Keyboard();
-
+    printf("keyboard initialized\n");
     player = new Player("assets/player.png", gfx->renderer,
                         0, 0, 32, 32, 2, 64);
+    printf("player initialized\n");
+    printf("========================================\n");
 
     frameA = SDL_GetTicks();
     main_loop = true;
