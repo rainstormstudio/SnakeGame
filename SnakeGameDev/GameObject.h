@@ -8,8 +8,8 @@ private:
     SDL_Rect srcRect, destRect;
     SDL_Renderer* renderer;
 public:
-    int posX, posY;
-    int speed;
+    double posX, posY;
+    double speed;
     GameObject(std::string textureSheet, SDL_Renderer* rendererName,
                int initX, int initY, int initWidth, int initHeight, int scale,
                int initSpeed);

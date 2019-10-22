@@ -4,28 +4,35 @@ Game::Game(){
     SCREEN_WIDTH = 800;
     SCREEN_HEIGHT = 600;
     FPS = 60;
-    int frameDelay = 1000 / FPS;
-    Uint32 frameStart;
-    int frameTime;
+    double frameDelay = 1000 / FPS;
+    Uint32 frameA;
+    Uint32 frameB;
+    Uint32 frameTime;
+    Uint32 sleepTime;
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT);
     keyboard = new Keyboard();
 
     player = new Player("assets/player.png", gfx->renderer,
                         0, 0, 32, 32, 2, 32);
+
+    frameA = SDL_GetTicks();
     main_loop = true;
     while (main_loop){
-        frameStart = SDL_GetTicks();
+        frameB = SDL_GetTicks();
+        frameTime = frameB - frameA;
+        if (frameDelay > frameTime){
+            SDL_Delay(frameDelay - frameTime);
+        }
+        frameA = SDL_GetTicks();
+        sleepTime = frameA - frameB;
 
-        update(frameTime / 1000.0f);
+        update((frameTime + sleepTime) / 1000.0f);
         render();
 
         if (keyboard->quitSignal) main_loop = false;
 
-        frameTime = SDL_GetTicks() - frameStart;
-        if (frameDelay > frameTime){
-            SDL_Delay(frameDelay - frameTime);
-        }
+        printf(" FPS: %i\n", (1000 / (frameTime + sleepTime)));
     }
     printf("the while loop is over");
 }

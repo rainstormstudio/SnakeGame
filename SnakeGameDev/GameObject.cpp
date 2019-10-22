@@ -37,13 +37,13 @@ void GameObject::updatePos(){
 }
 
 void Player::update(Keyboard* keyboard, double deltaTime){
-    if (keyboard->isKeyReleased(SDLK_a))
-        posX -= speed;
-    if (keyboard->isKeyReleased(SDLK_d))
-        posX += speed;
-    if (keyboard->isKeyReleased(SDLK_w))
-        posY -= speed;
-    if (keyboard->isKeyReleased(SDLK_s))
-        posY += speed;
+    if (keyboard->isKeyPressed(SDLK_a))
+        posX -= speed * deltaTime;
+    if (keyboard->isKeyPressed(SDLK_d))
+        posX += speed * deltaTime;
+    if (keyboard->isKeyPressed(SDLK_w))
+        posY -= speed * deltaTime;
+    if (keyboard->isKeyPressed(SDLK_s))
+        posY += speed * deltaTime;
     updatePos();
 }
