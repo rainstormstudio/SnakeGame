@@ -32,7 +32,7 @@ Game::Game(){
 
         if (keyboard->quitSignal) main_loop = false;
 
-        printf(" FPS: %i\n", (1000 / (frameTime + sleepTime)));
+        printf(" FPS: %.3f\n", (1000.0f / (frameTime + sleepTime)));
     }
     printf("the while loop is over");
 }
