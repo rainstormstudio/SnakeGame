@@ -17,10 +17,11 @@ public:
     int SCREEN_WIDTH;
     int SCREEN_HEIGHT;
     const char* TITLE;
+    Uint32 fullscreen;
     SDL_Window* window;
     SDL_Renderer* renderer;
 
-    Graphics(std::string title, int initWidth, int initHeight);
+    Graphics(std::string title, int initWidth, int initHeight, Uint32 fullscreenFlag);
     ~Graphics();
     void clear();
     void render();

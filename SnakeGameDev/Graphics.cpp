@@ -1,9 +1,10 @@
 #include "Graphics.h"
 
-Graphics::Graphics(std::string title, int initWidth, int initHeight){
+Graphics::Graphics(std::string title, int initWidth, int initHeight, Uint32 fullscreenFlag){
     SCREEN_WIDTH = initWidth;
     SCREEN_HEIGHT = initHeight;
     TITLE = title.c_str();
+    fullscreen = fullscreenFlag;
 
     // initialize windows
     window = NULL;
@@ -15,6 +16,7 @@ Graphics::Graphics(std::string title, int initWidth, int initHeight){
     }
     else{
         window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+        SDL_SetWindowFullscreen(window, fullscreen);
         if (window == NULL){
             printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
         }

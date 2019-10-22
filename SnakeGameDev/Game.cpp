@@ -10,7 +10,7 @@ Game::Game(){
     Uint32 frameTime;
     Uint32 sleepTime;
 
-    gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT);
+    gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     printf("graphics initialized\n");
     map = new Map(gfx->renderer);
     printf("map initialized\n");
