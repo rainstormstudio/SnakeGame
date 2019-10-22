@@ -17,7 +17,7 @@ Game::Game(){
     keyboard = new Keyboard();
     printf("keyboard initialized\n");
     player = new Player("assets/player.png", gfx->renderer,
-                        0, 0, 32, 32, 2, 64);
+                        64, 64, 32, 32, 1, 64);
     printf("player initialized\n");
     printf("========================================\n");
 

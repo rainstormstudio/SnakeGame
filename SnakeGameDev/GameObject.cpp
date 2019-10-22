@@ -32,8 +32,10 @@ void GameObject::render(){
 }
 
 void GameObject::updatePos(){
-    destRect.x = round(posX);
-    destRect.y = round(posY);
+    if ((int)round(posX) % 32 == 0) destRect.x = round(posX);
+    if ((int)round(posY) % 32 == 0) destRect.y = round(posY);
+    //destRect.x = (int)round(posX);
+    //destRect.y = (int)round(posY);
 }
 
 void Player::update(Keyboard* keyboard, double deltaTime){

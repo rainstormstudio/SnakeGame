@@ -19,7 +19,7 @@
 	<SDL_mixer.h>
 	<string>
 
-1571740633 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.cpp
+1571741690 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.cpp
 	"Game.h"
 
 1571739870 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.cpp
@@ -41,6 +41,6 @@
 1571739302 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Map.h
 	"Graphics.h"
 
-1571740576 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Map.cpp
+1571740989 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Map.cpp
 	"Map.h"
 
