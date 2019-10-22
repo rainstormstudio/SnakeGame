@@ -48,6 +48,8 @@
 		</Unit>
 		<Unit filename="Keyboard.cpp" />
 		<Unit filename="Keyboard.h" />
+		<Unit filename="Map.cpp" />
+		<Unit filename="Map.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
