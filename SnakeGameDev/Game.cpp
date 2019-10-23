@@ -1,5 +1,13 @@
 #include "Game.h"
 
+Manager manager;
+auto& newPlayer(manager.addEntity());
+Graphics* gfx;
+    
+Map* map;
+Keyboard* keyboard;
+Player* player;
+
 Game::Game(){
     SCREEN_WIDTH = 800;
     SCREEN_HEIGHT = 640;
@@ -12,6 +20,8 @@ Game::Game(){
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     printf("graphics initialized\n");
+    newPlayer.addComponent<TransformComponent>();
+    
     map = new Map(gfx->renderer);
     printf("map initialized\n");
     keyboard = new Keyboard();
@@ -46,7 +56,10 @@ Game::~Game(){}
 
 void Game::update(double deltaTime){
     keyboard->update();
+    manager.update();
     player->update(keyboard, deltaTime);
+    printf("x = %i\n", newPlayer.getComponent<TransformComponent>().x());
+    printf("y = %i\n", newPlayer.getComponent<TransformComponent>().y());
 }
 
 void Game::render(){
