@@ -1,32 +1,22 @@
 #pragma once
 #include "Components.h"
+#include "../Vector2D.h"
 
 class TransformComponent : public Component{
 private:
-    double posX, posY;
     double speed;
 public:
+    Vector2D position;
+
     TransformComponent(){
-        posX = posY = 0;
-        speed = 32;
+        TransformComponent(0, 0, 32);
     }
     TransformComponent(int x, int y, int initSpeed){
-        posX = x; posY = y; speed = initSpeed;
-    }
-    int x(){ return posX;}
-
-    int y(){ return posY;}
-
-    void init() override{
-        posX = 0; posY = 0;
+        position.x = x; position.y = y; speed = initSpeed;
     }
 
     void update(double deltaTime) override{
-        posX += speed * deltaTime;
-        posY += speed * deltaTime;
-    }
-
-    void setPosition(int x, int y){
-        posX = x; posY = y;
+        position.x += speed * deltaTime;
+        position.y += speed * deltaTime;
     }
 };

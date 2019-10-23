@@ -7,7 +7,13 @@
         "queue": "cpp",
         "utility": "cpp",
         "vector": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "bitset": "cpp",
+        "unordered_map": "cpp",
+        "fstream": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "streambuf": "cpp"
     }, 
     "code-runner.executorMap": {
         "javascript": "node",

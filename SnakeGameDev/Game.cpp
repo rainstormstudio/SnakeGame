@@ -19,7 +19,7 @@ Game::Game(){
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     printf("graphics initialized\n");
-    player.addComponent<TransformComponent>(0, 0, 32);
+    player.addComponent<TransformComponent>(64, 64, 32);
     player.addComponent<SpriteComponent>("assets/player.png", gfx->renderer);
 
     map = new Map(gfx->renderer);
@@ -54,6 +54,7 @@ Game::~Game(){}
 
 void Game::update(double deltaTime){
     keyboard->update();
+    manager.refresh();
     manager.update(deltaTime);
 }
 

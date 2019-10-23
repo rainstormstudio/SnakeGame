@@ -4,23 +4,26 @@
 
 class SpriteComponent : public Component{
 private:
-    TransformComponent* position;
+    TransformComponent* transform;
     SDL_Texture* texture;
     SDL_Rect srcRect, destRect;
 public:
     SpriteComponent() = default;
     SpriteComponent(std::string path, SDL_Renderer* renderer){
+        setTexture(path, renderer);
+    }
+    void setTexture(std::string path, SDL_Renderer* renderer){
         texture = Graphics::loadTexture(path, renderer);
     }
     void init() override{
-        position = &entity->getComponent<TransformComponent>();
+        transform = &entity->getComponent<TransformComponent>();
         srcRect.x = srcRect.y = 0;
         srcRect.w = srcRect.h = 32;
         destRect.w = destRect.h = 32;
     }
     void update(double deltaTime) override{
-        destRect.x = (int)round(position->x());
-        destRect.y = (int)round(position->y());
+        destRect.x = (int)round(transform->position.x);
+        destRect.y = (int)round(transform->position.y);
     }
     void draw(SDL_Renderer* renderer) override{
         SDL_Point center;
