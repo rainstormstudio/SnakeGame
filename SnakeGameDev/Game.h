@@ -1,10 +1,8 @@
 #pragma once
 #include "Graphics.h"
-#include "ECS.h"
-#include "Components.h"
+#include "ECS/Components.h"
 #include "Map.h"
 #include "Keyboard.h"
-#include "GameObject.h"
 
 class Game{
 private:

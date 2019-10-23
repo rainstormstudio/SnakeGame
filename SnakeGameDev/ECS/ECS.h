@@ -18,7 +18,7 @@ inline ComponentID getComponentTypeID(){
     return lastID++;
 }
 
-template <typename T> 
+template <typename T>
 inline ComponentID getComponentTypeID() noexcept{
     static ComponentID typeID = getComponentTypeID();
     return typeID;
@@ -35,8 +35,8 @@ public:
 
     virtual ~Component(){}
     virtual void init(){}
-    virtual void update(){}
-    virtual void draw(){}
+    virtual void update(double deltaTime){}
+    virtual void draw(SDL_Renderer* renderer){}
 };
 
 class Entity{
@@ -46,12 +46,12 @@ private:
     ComponentArray componentArray;
     ComponentBitSet componentBitSet;
 public:
-    void update(){
-        for (auto& c : components) c->update();
+    void update(double deltaTime){
+        for (auto& c : components) c->update(deltaTime);
     }
 
-    void draw(){
-        for (auto& c : components) c->draw();
+    void draw(SDL_Renderer* renderer){
+        for (auto& c : components) c->draw(renderer);
     }
 
     bool isActive() const{
@@ -81,7 +81,7 @@ public:
         return *c;
     }
 
-    template <typename T> 
+    template <typename T>
     T& getComponent() const{
         auto ptr(componentArray[getComponentTypeID<T>()]);
         return *static_cast<T*>(ptr);
@@ -89,15 +89,15 @@ public:
 };
 
 class Manager{
-private:    
+private:
     std::vector<std::unique_ptr<Entity>> entities;
 public:
-    void update(){
-        for (auto& e : entities) e->update();
+    void update(double deltaTime){
+        for (auto& e : entities) e->update(deltaTime);
     }
 
-    void draw(){
-        for (auto& e : entities) e->draw();
+    void draw(SDL_Renderer* renderer){
+        for (auto& e : entities) e->draw(renderer);
     }
 
     void refresh(){
