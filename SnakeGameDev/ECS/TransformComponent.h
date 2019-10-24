@@ -23,8 +23,7 @@ public:
     }
 
     void init() override{
-        velocity.x = 0; 
-        velocity.y = 0;
+        velocity.zero();
     }
 
     void update(double deltaTime) override{
