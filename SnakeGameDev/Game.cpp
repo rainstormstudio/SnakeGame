@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "ECS/Components.h"
+#include "Map.h"
+#include "Vector2D.h"
 
 Manager manager;
 auto& player(manager.addEntity());
@@ -49,9 +51,9 @@ Game::Game(){
 Game::~Game(){}
 
 void Game::update(double deltaTime){
-    handleEvents();
     manager.refresh();
     manager.update(deltaTime);
+    handleEvents();
 }
 
 void Game::render(){
@@ -62,7 +64,6 @@ void Game::render(){
 }
 
 void Game::handleEvents(){
-    SDL_PollEvent(&event);
     if (event.type == SDL_QUIT)
         main_loop = false;
 }
