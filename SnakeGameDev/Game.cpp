@@ -23,7 +23,7 @@ Game::Game(){
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     printf("graphics initialized\n");
-    player.addComponent<TransformComponent>(64, 64, 32, 32, 32, 2);
+    player.addComponent<TransformComponent>(64, 64, 64, 32, 32, 2);
     player.addComponent<SpriteComponent>("assets/player.png", gfx->renderer);
     player.addComponent<ColliderComponent>("player");
     player.addComponent<KeyboardController>();
@@ -65,6 +65,7 @@ void Game::update(double deltaTime){
     if (Collision::AABBbox(player.getComponent<ColliderComponent>().collider,
                            wall.getComponent<ColliderComponent>().collider)){
                                player.getComponent<TransformComponent>().scale = 1;
+                               player.getComponent<TransformComponent>().velocity *= -1;
                                std::cout << "hit" << std::endl;
                            }
 }
