@@ -39,7 +39,12 @@ Map::Map(SDL_Renderer* rendererName){
     destRect.w = destRect.h = 32;
 }
 
-Map::~Map(){}
+Map::~Map(){
+    SDL_DestroyTexture(dirt);
+    SDL_DestroyTexture(grass);
+    SDL_DestroyTexture(border);
+    SDL_DestroyTexture(borderCorner);
+}
 
 void Map::loadMap(int inputMap[20][25]){
     for (int i = 0; i < 20; i++)

@@ -12,18 +12,25 @@ public:
     SpriteComponent(std::string path, SDL_Renderer* renderer){
         setTexture(path, renderer);
     }
+    ~SpriteComponent(){
+        SDL_DestroyTexture(texture);
+    }
     void setTexture(std::string path, SDL_Renderer* renderer){
         texture = Graphics::loadTexture(path, renderer);
     }
     void init() override{
         transform = &entity->getComponent<TransformComponent>();
         srcRect.x = srcRect.y = 0;
-        srcRect.w = srcRect.h = 32;
-        destRect.w = destRect.h = 32;
+        srcRect.w = transform->width;
+        srcRect.h = transform->height;
+        destRect.w = transform->width * transform->scale;
+        destRect.h = transform->height * transform->scale;
     }
     void update(double deltaTime) override{
-        destRect.x = (int)round(transform->position.x);
-        destRect.y = (int)round(transform->position.y);
+        destRect.x = static_cast<int>(round(transform->position.x));
+        destRect.y = static_cast<int>(round(transform->position.y));
+        destRect.w = transform->width * transform->scale;
+        destRect.h = transform->height * transform->scale;
     }
     void draw(SDL_Renderer* renderer) override{
         SDL_Point center;
