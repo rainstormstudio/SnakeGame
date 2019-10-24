@@ -2,10 +2,9 @@
 
 Manager manager;
 auto& player(manager.addEntity());
-Graphics* gfx;
+SDL_Event Game::event;
 
 Map* map;
-Keyboard* keyboard;
 
 Game::Game(){
     SCREEN_WIDTH = 800;
@@ -21,12 +20,10 @@ Game::Game(){
     printf("graphics initialized\n");
     player.addComponent<TransformComponent>(64, 64, 32);
     player.addComponent<SpriteComponent>("assets/player.png", gfx->renderer);
+    player.addComponent<KeyboardController>();
 
     map = new Map(gfx->renderer);
     printf("map initialized\n");
-    keyboard = new Keyboard();
-    printf("keyboard initialized\n");
-    printf("player initialized\n");
     printf("========================================\n");
 
     frameA = SDL_GetTicks();
@@ -43,8 +40,6 @@ Game::Game(){
         update((frameTime + sleepTime) / 1000.0f);
         render();
 
-        if (keyboard->quitSignal) main_loop = false;
-
         printf(" FPS: %.3f\n", (1000.0f / (frameTime + sleepTime)));
     }
     printf("the while loop is over");
@@ -53,7 +48,7 @@ Game::Game(){
 Game::~Game(){}
 
 void Game::update(double deltaTime){
-    keyboard->update();
+    handleEvents();
     manager.refresh();
     manager.update(deltaTime);
 }
@@ -63,4 +58,10 @@ void Game::render(){
     map->drawMap();
     manager.draw(gfx->renderer);
     gfx->render();
+}
+
+void Game::handleEvents(){
+    SDL_PollEvent(&event);
+    if (event.type == SDL_QUIT)
+        main_loop = false;
 }

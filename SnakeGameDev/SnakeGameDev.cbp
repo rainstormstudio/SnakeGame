@@ -38,20 +38,21 @@
 			<Add option="-lSDL2_ttf" />
 			<Add option="-lSDL2_mixer" />
 		</Linker>
-		<Unit filename="Components.h" />
-		<Unit filename="ECS.h" />
+		<Unit filename="ECS/Components.h" />
+		<Unit filename="ECS/ECS.h" />
+		<Unit filename="ECS/KeyboardController.h" />
+		<Unit filename="ECS/SpriteComponent.h" />
+		<Unit filename="ECS/TransformComponent.h" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
-		<Unit filename="GameObject.cpp" />
-		<Unit filename="GameObject.h" />
 		<Unit filename="Graphics.cpp" />
 		<Unit filename="Graphics.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="Keyboard.cpp" />
-		<Unit filename="Keyboard.h" />
 		<Unit filename="Map.cpp" />
 		<Unit filename="Map.h" />
+		<Unit filename="Vector2D.cpp" />
+		<Unit filename="Vector2D.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
