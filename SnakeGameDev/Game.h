@@ -1,7 +1,5 @@
 #pragma once
 #include "Graphics.h"
-#include "Map.h"
-#include "Vector2D.h"
 
 class Game{
 private:
