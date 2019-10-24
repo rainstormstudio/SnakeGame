@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "ECS/Components.h"
 
 Manager manager;
 auto& player(manager.addEntity());

@@ -1,6 +1,5 @@
 #pragma once
 #include "Graphics.h"
-#include "ECS/Components.h"
 #include "Map.h"
 #include "Vector2D.h"
 
