@@ -12,6 +12,13 @@ std::vector<ColliderComponent*> Game::colliders;
 
 Map* map;
 
+enum groupLabels : std::size_t{
+    groupMap,
+    groupPlayers,
+    groupEnemies,
+    groupColliders
+};
+
 Game::Game(){
     SCREEN_WIDTH = 800;
     SCREEN_HEIGHT = 640;
@@ -30,9 +37,9 @@ Game::Game(){
     player.addComponent<SpriteComponent>("assets/player.png");
     player.addComponent<ColliderComponent>("player");
     player.addComponent<KeyboardController>();
+    player.addGroup(groupPlayers);
     printf("player initialized\n");
-    //map = new Map();
-    //printf("map initialized\n");
+    
     printf("========================================\n");
 
     frameA = SDL_GetTicks();
@@ -69,13 +76,25 @@ void Game::update(double deltaTime){
     }
 }
 
+auto& tiles(manager.getGroup(groupMap));
+auto& players(manager.getGroup(groupPlayers));
+auto& enemies(manager.getGroup(groupEnemies));
 void Game::render(){
     gfx->clear();
-    manager.draw();
+    for (auto& tile : tiles){
+        tile->draw();
+    }
+    for (auto& play : players){
+        play->draw();
+    }
+    for (auto& enemy : enemies){
+        enemy->draw();
+    }
     gfx->render();
 }
 
 void Game::addTile(int id, int x, int y){
     auto& tile(manager.addEntity());
     tile.addComponent<TileComponent>(x, y, 32, 32, id);
+    tile.addGroup(groupMap);
 }

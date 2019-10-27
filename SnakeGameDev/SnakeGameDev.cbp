@@ -42,6 +42,7 @@
 		<Unit filename="Collision.h" />
 		<Unit filename="ECS/ColliderComponent.h" />
 		<Unit filename="ECS/Components.h" />
+		<Unit filename="ECS/ECS.cpp" />
 		<Unit filename="ECS/ECS.h" />
 		<Unit filename="ECS/KeyboardController.h" />
 		<Unit filename="ECS/SpriteComponent.h" />
