@@ -33,13 +33,13 @@ Game::Game(){
     printf("graphics initialized\n");
     Map::loadMap("levels/level.map", 25, 20);
     printf("map initialized\n");
-    player.addComponent<TransformComponent>(64, 64, 64, 32, 32, 1);
-    player.addComponent<SpriteComponent>("assets/player.png");
+    player.addComponent<TransformComponent>(64, 64, 64, 32, 32, 2);
+    player.addComponent<SpriteComponent>("assets/player-idle.png", 4, 150);
     player.addComponent<ColliderComponent>("player");
     player.addComponent<KeyboardController>();
     player.addGroup(groupPlayers);
     printf("player initialized\n");
-    
+
     printf("========================================\n");
 
     frameA = SDL_GetTicks();

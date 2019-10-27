@@ -17,7 +17,7 @@
 	<SDL_mixer.h>
 	<string>
 
-1572186357 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.cpp
+1572187947 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.cpp
 	"Game.h"
 	"ECS/Components.h"
 	"Map.h"
@@ -78,7 +78,7 @@
 	"Components.h"
 	"../Vector2D.h"
 
-1572186616 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/SpriteComponent.h
+1572188868 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/SpriteComponent.h
 	"../Graphics.h"
 	"Components.h"
 
@@ -111,4 +111,7 @@
 	"SpriteComponent.h"
 	"SDL2/SDL.h"
 	<string>
+
+1572187947 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/ECS.cpp
+	"ECS.h"
 
