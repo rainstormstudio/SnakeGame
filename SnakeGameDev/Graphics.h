@@ -19,12 +19,14 @@ public:
     const char* TITLE;
     Uint32 fullscreen;
     SDL_Window* window;
-    SDL_Renderer* renderer;
+    static SDL_Renderer* renderer;
 
     Graphics(std::string title, int initWidth, int initHeight, Uint32 fullscreenFlag);
     ~Graphics();
     void clear();
     void render();
+    static SDL_Texture* loadTexture(std::string fileName);
     static SDL_Texture* loadTexture(std::string fileName, SDL_Renderer* rendererName);
+    static void drawTexture(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect destRect, double angle, SDL_Point center, SDL_RendererFlip flip);
     static void drawTexture(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect destRect, double angle, SDL_Point center, SDL_RendererFlip flip, SDL_Renderer* rendererName);
 };

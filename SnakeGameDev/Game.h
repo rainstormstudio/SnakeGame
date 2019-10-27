@@ -1,5 +1,8 @@
 #pragma once
 #include "Graphics.h"
+#include <vector>
+
+class ColliderComponent;
 
 class Game{
 private:
@@ -13,6 +16,7 @@ private:
 
 public:
     static SDL_Event event;
+    static std::vector<ColliderComponent*> colliders;
 
     Game();
     ~Game();

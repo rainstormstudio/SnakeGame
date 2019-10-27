@@ -8,6 +8,10 @@ Manager manager;
 SDL_Event Game::event;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
+std::vector<ColliderComponent*> Game::colliders;
+auto& tile0(manager.addEntity());
+auto& tile1(manager.addEntity());
+auto& tile2(manager.addEntity());
 
 Map* map;
 
@@ -24,16 +28,21 @@ Game::Game(){
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     printf("graphics initialized\n");
     player.addComponent<TransformComponent>(64, 64, 64, 32, 32, 2);
-    player.addComponent<SpriteComponent>("assets/player.png", gfx->renderer);
+    player.addComponent<SpriteComponent>("assets/player.png");
     player.addComponent<ColliderComponent>("player");
     player.addComponent<KeyboardController>();
 
     wall.addComponent<TransformComponent>(300, 300, 32, 300, 20, 1);
-    wall.addComponent<SpriteComponent>("assets/border.png", gfx->renderer);
+    wall.addComponent<SpriteComponent>("assets/border.png");
     wall.addComponent<ColliderComponent>("wall");
 
+    tile0.addComponent<TileComponent>(200, 200, 32, 32, DIRT);
+    tile0.addComponent<ColliderComponent>("dirt");
+    tile1.addComponent<TileComponent>(250, 250, 32, 32, GRASS);
+    tile2.addComponent<TileComponent>(150, 150, 32, 32, BORDER_UP);
+    tile2.addComponent<ColliderComponent>("border");
 
-    map = new Map(gfx->renderer);
+    //map = new Map();
     printf("map initialized\n");
     printf("========================================\n");
 
@@ -63,17 +72,17 @@ void Game::update(double deltaTime){
     manager.update(deltaTime);
     handleEvents();
     if (Collision::AABBbox(player.getComponent<ColliderComponent>().collider,
-                           wall.getComponent<ColliderComponent>().collider)){
-                               player.getComponent<TransformComponent>().scale = 1;
-                               player.getComponent<TransformComponent>().velocity *= -1;
-                               std::cout << "hit" << std::endl;
-                           }
+        wall.getComponent<ColliderComponent>().collider)){
+        player.getComponent<TransformComponent>().scale = 1;
+        player.getComponent<TransformComponent>().velocity *= -1;
+        std::cout << "hit" << std::endl;
+    }
 }
 
 void Game::render(){
     gfx->clear();
-    map->drawMap();
-    manager.draw(gfx->renderer);
+    //map->drawMap();
+    manager.draw();
     gfx->render();
 }
 

@@ -36,7 +36,7 @@ public:
     virtual ~Component(){}
     virtual void init(){}
     virtual void update(double deltaTime){}
-    virtual void draw(SDL_Renderer* renderer){}
+    virtual void draw(){}
 };
 
 class Entity{
@@ -50,8 +50,8 @@ public:
         for (auto& c : components) c->update(deltaTime);
     }
 
-    void draw(SDL_Renderer* renderer){
-        for (auto& c : components) c->draw(renderer);
+    void draw(){
+        for (auto& c : components) c->draw();
     }
 
     bool isActive() const{
@@ -96,8 +96,8 @@ public:
         for (auto& e : entities) e->update(deltaTime);
     }
 
-    void draw(SDL_Renderer* renderer){
-        for (auto& e : entities) e->draw(renderer);
+    void draw(){
+        for (auto& e : entities) e->draw();
     }
 
     void refresh(){

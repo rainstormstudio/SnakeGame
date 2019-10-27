@@ -7,17 +7,22 @@ private:
     TransformComponent* transform;
     SDL_Texture* texture;
     SDL_Rect srcRect, destRect;
+
 public:
     SpriteComponent() = default;
-    SpriteComponent(std::string path, SDL_Renderer* renderer){
-        setTexture(path, renderer);
+
+    SpriteComponent(std::string path){
+        setTexture(path);
     }
+
     ~SpriteComponent(){
         SDL_DestroyTexture(texture);
     }
-    void setTexture(std::string path, SDL_Renderer* renderer){
-        texture = Graphics::loadTexture(path, renderer);
+
+    void setTexture(std::string path){
+        texture = Graphics::loadTexture(path);
     }
+
     void init() override{
         transform = &entity->getComponent<TransformComponent>();
         srcRect.x = srcRect.y = 0;
@@ -26,15 +31,17 @@ public:
         destRect.w = transform->width * transform->scale;
         destRect.h = transform->height * transform->scale;
     }
+
     void update(double deltaTime) override{
         destRect.x = static_cast<int>(round(transform->position.x));
         destRect.y = static_cast<int>(round(transform->position.y));
         destRect.w = transform->width * transform->scale;
         destRect.h = transform->height * transform->scale;
     }
-    void draw(SDL_Renderer* renderer) override{
+
+    void draw() override{
         SDL_Point center;
         center.x = center.y = 0;
-        Graphics::drawTexture(texture, srcRect, destRect, 0, center, SDL_FLIP_NONE, renderer);
+        Graphics::drawTexture(texture, srcRect, destRect, 0, center, SDL_FLIP_NONE);
     }
 };

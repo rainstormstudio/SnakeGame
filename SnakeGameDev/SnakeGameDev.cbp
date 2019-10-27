@@ -45,6 +45,7 @@
 		<Unit filename="ECS/ECS.h" />
 		<Unit filename="ECS/KeyboardController.h" />
 		<Unit filename="ECS/SpriteComponent.h" />
+		<Unit filename="ECS/TileComponent.h" />
 		<Unit filename="ECS/TransformComponent.h" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />

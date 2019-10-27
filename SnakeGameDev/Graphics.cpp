@@ -1,5 +1,7 @@
 #include "Graphics.h"
 
+SDL_Renderer *Graphics::renderer = nullptr;
+
 Graphics::Graphics(std::string title, int initWidth, int initHeight, Uint32 fullscreenFlag){
     SCREEN_WIDTH = initWidth;
     SCREEN_HEIGHT = initHeight;
@@ -8,7 +10,7 @@ Graphics::Graphics(std::string title, int initWidth, int initHeight, Uint32 full
 
     // initialize windows
     window = NULL;
-    renderer = NULL;
+    renderer = nullptr;
 
     // initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0){
@@ -43,10 +45,17 @@ void Graphics::render(){
     SDL_RenderPresent(renderer);
 }
 
+SDL_Texture* Graphics::loadTexture(std::string fileName){
+    return IMG_LoadTexture(renderer, fileName.c_str());
+}
+
 SDL_Texture* Graphics::loadTexture(std::string fileName, SDL_Renderer* rendererName){
     return IMG_LoadTexture(rendererName, fileName.c_str());
 }
 
+void Graphics::drawTexture(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect destRect, double angle, SDL_Point center, SDL_RendererFlip flip){
+    SDL_RenderCopyEx(renderer, texture, &srcRect, &destRect, angle, &center, flip);
+}
 void Graphics::drawTexture(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect destRect, double angle, SDL_Point center, SDL_RendererFlip flip, SDL_Renderer* rendererName){
     SDL_RenderCopyEx(rendererName, texture, &srcRect, &destRect, angle, &center, flip);
 }
