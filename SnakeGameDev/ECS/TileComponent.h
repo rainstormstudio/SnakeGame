@@ -34,9 +34,14 @@ public:
         tileRect.w = w;
         tileRect.h = h;
         tileID = id;
+    }
+
+    void init() override{
+        entity->addComponent<TransformComponent>(tileRect.x, tileRect.y, 0, tileRect.w, tileRect.h, 1);
+        transform = &entity->getComponent<TransformComponent>();
 
         switch(tileID){
-        case DIRT: 
+        case DIRT:
             path = "assets/dirt.png";
             break;
         case GRASS:
@@ -44,16 +49,37 @@ public:
             break;
         case BORDER_UP:
             path = "assets/border.png";
+            transform->angle = 0.0f;
+            break;
+        case BORDER_DOWN:
+            path = "assets/border.png";
+            transform->angle = 180.0f;
+            break;
+        case BORDER_LEFT:
+            path = "assets/border.png";
+            transform->angle = 270.0f;
+            break;
+        case BORDER_RIGHT:
+            path = "assets/border.png";
+            transform->angle = 90.0f;
+            break;
+        case BORDER_CORNER_TOPLEFT:
+            path = "assets/border-corner.png";
+            transform->angle = 0.0f;
+            break;
+        case BORDER_CORNER_TOPRIGHT:
+            path = "assets/border-corner.png";
+            transform->angle = 90.0f;
             break;
         case BORDER_CORNER_BOTTOMLEFT:
             path = "assets/border-corner.png";
+            transform->angle = 270.0f;
+            break;
+        case BORDER_CORNER_BOTTOMRIGHT:
+            path = "assets/border-corner.png";
+            transform->angle = 180.0f;
             break;
         }
-    }
-
-    void init() override{
-        entity->addComponent<TransformComponent>(tileRect.x, tileRect.y, 0, tileRect.w, tileRect.h, 1);
-        transform = &entity->getComponent<TransformComponent>();
 
         entity->addComponent<SpriteComponent>(path);
         sprite = &entity->getComponent<SpriteComponent>();

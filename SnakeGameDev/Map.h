@@ -1,5 +1,6 @@
 #pragma once
 #include "Graphics.h"
+#include <string>
 
 #define DIRT                        0
 #define GRASS                       1
@@ -14,17 +15,9 @@
 
 class Map{
 private:
-    SDL_Renderer* renderer;
-    SDL_Rect srcRect, destRect;
-    SDL_Point center;
-    SDL_Texture* grass;
-    SDL_Texture* dirt;
-    SDL_Texture* border;
-    SDL_Texture* borderCorner;
-    int map[20][25];
 public:
-    Map(SDL_Renderer* rendererName);
+    Map();
     ~Map();
-    void loadMap(int inputMap[20][25]);
+    static void loadMap(std::string path, int sizeX, int sizeY);
     void drawMap();
 };

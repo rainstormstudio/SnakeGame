@@ -41,7 +41,8 @@ public:
 
     void draw() override{
         SDL_Point center;
-        center.x = center.y = 0;
-        Graphics::drawTexture(texture, srcRect, destRect, 0, center, SDL_FLIP_NONE);
+        center.x = srcRect.w / 2;
+        center.y = srcRect.h / 2;
+        Graphics::drawTexture(texture, srcRect, destRect, transform->angle, center, SDL_FLIP_NONE);
     }
 };

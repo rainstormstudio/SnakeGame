@@ -12,6 +12,7 @@ public:
     int width;
     int height;
     int scale;
+    double angle;
 
     TransformComponent(){
         TransformComponent(0, 0, 32, 32, 32, 1);
@@ -20,6 +21,7 @@ public:
                        int initWidth, int initHeight, int initScale){
         position.x = x; position.y = y; speed = initSpeed;
         width = initWidth; height = initHeight; scale = initScale;
+        angle = 0.0f;
     }
 
     void init() override{

@@ -9,9 +9,6 @@ SDL_Event Game::event;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 std::vector<ColliderComponent*> Game::colliders;
-auto& tile0(manager.addEntity());
-auto& tile1(manager.addEntity());
-auto& tile2(manager.addEntity());
 
 Map* map;
 
@@ -27,23 +24,15 @@ Game::Game(){
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     printf("graphics initialized\n");
+    Map::loadMap("levels/level.map", 25, 20);
+    printf("map initialized\n");
     player.addComponent<TransformComponent>(64, 64, 64, 32, 32, 1);
     player.addComponent<SpriteComponent>("assets/player.png");
     player.addComponent<ColliderComponent>("player");
     player.addComponent<KeyboardController>();
-
-    wall.addComponent<TransformComponent>(300, 300, 32, 300, 20, 1);
-    wall.addComponent<SpriteComponent>("assets/border.png");
-    wall.addComponent<ColliderComponent>("wall");
-
-    tile0.addComponent<TileComponent>(200, 200, 32, 32, DIRT);
-    tile0.addComponent<ColliderComponent>("dirt");
-    tile1.addComponent<TileComponent>(250, 250, 32, 32, GRASS);
-    tile2.addComponent<TileComponent>(150, 150, 32, 32, BORDER_UP);
-    tile2.addComponent<ColliderComponent>("border");
-
+    printf("player initialized\n");
     //map = new Map();
-    printf("map initialized\n");
+    //printf("map initialized\n");
     printf("========================================\n");
 
     frameA = SDL_GetTicks();
@@ -56,6 +45,10 @@ Game::Game(){
         }
         frameA = SDL_GetTicks();
         sleepTime = frameA - frameB;
+
+
+        if (event.type == SDL_QUIT)
+            main_loop = false;
 
         update((frameTime + sleepTime) / 1000.0f);
         render();
@@ -70,7 +63,6 @@ Game::~Game(){}
 void Game::update(double deltaTime){
     manager.refresh();
     manager.update(deltaTime);
-    handleEvents();
 
     for (auto cc : colliders){
         Collision::AABBbox(player.getComponent<ColliderComponent>(), *cc);
@@ -79,12 +71,11 @@ void Game::update(double deltaTime){
 
 void Game::render(){
     gfx->clear();
-    //map->drawMap();
     manager.draw();
     gfx->render();
 }
 
-void Game::handleEvents(){
-    if (event.type == SDL_QUIT)
-        main_loop = false;
+void Game::addTile(int id, int x, int y){
+    auto& tile(manager.addEntity());
+    tile.addComponent<TileComponent>(x, y, 32, 32, id);
 }
