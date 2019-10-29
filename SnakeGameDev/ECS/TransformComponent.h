@@ -3,9 +3,8 @@
 #include "../Vector2D.h"
 
 class TransformComponent : public Component{
-private:
-    double speed;
 public:
+    double speed;
     Vector2D position;
     Vector2D velocity;
 
@@ -29,7 +28,7 @@ public:
     }
 
     void update(double deltaTime) override{
-        position.x += velocity.x * speed * deltaTime;
-        position.y += velocity.y * speed * deltaTime;
+        // position.x += velocity.x * speed * deltaTime;
+        // position.y += velocity.y * speed * deltaTime;
     }
 };

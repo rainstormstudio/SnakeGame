@@ -20,6 +20,10 @@ enum groupLabels : std::size_t{
     groupColliders
 };
 
+auto& tiles(manager.getGroup(groupMap));
+auto& players(manager.getGroup(groupPlayers));
+auto& enemies(manager.getGroup(groupEnemies));
+
 Game::Game(){
     SCREEN_WIDTH = 800;
     SCREEN_HEIGHT = 640;
@@ -34,7 +38,7 @@ Game::Game(){
     printf("graphics initialized\n");
     Map::loadMap("levels/level.map", 25, 20);
     printf("map initialized\n");
-    player.addComponent<TransformComponent>(64, 64, 64, 32, 32, 2);
+    player.addComponent<TransformComponent>(400, 320, 64, 32, 32, 2);
     player.addComponent<SpriteComponent>("assets/player-anim.png", true);
     player.addComponent<ColliderComponent>("player");
     player.addComponent<KeyboardController>();
@@ -72,14 +76,15 @@ void Game::update(double deltaTime){
     manager.refresh();
     manager.update(deltaTime);
 
-    for (auto cc : colliders){
-        Collision::AABBbox(player.getComponent<ColliderComponent>(), *cc);
+    Vector2D pVel = player.getComponent<TransformComponent>().velocity;
+    double pSpeed = player.getComponent<TransformComponent>().speed;
+
+    for (auto t : tiles){
+        t->getComponent<TileComponent>().destRect.x += -(pVel.x * pSpeed * deltaTime);
+        t->getComponent<TileComponent>().destRect.y += -(pVel.y * pSpeed * deltaTime);
     }
 }
 
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
 void Game::render(){
     gfx->clear();
     for (auto& tile : tiles){

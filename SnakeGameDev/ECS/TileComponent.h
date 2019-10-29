@@ -37,14 +37,14 @@ public:
 
         destRect.x = posX;
         destRect.y = posY;
-        destRect.w = destRect.h = 32;
+        destRect.w = destRect.h = 64;
 
         angle = theta;
     }
 
     void draw() override{
         SDL_Point center;
-        center.x = center.y = 32 / 2;
+        center.x = center.y = 32 * 2 / 2;
         Graphics::drawTexture(texture, srcRect, destRect, angle, center, SDL_FLIP_NONE);
     }
 
