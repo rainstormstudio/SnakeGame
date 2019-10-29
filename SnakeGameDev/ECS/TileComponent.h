@@ -21,6 +21,7 @@ class TileComponent : public Component{
 public:
     SDL_Texture* texture;
     SDL_Rect srcRect, destRect;
+    Vector2D position;
     int angle;
 
     TileComponent() = default;
@@ -30,6 +31,8 @@ public:
     }
 
     TileComponent(int srcX, int srcY, int posX, int posY, int theta, std::string path){
+        position.x = posX;
+        position.y = posY;
         texture = Graphics::loadTexture(path);
         srcRect.x = srcX;
         srcRect.y = srcY;
@@ -40,6 +43,11 @@ public:
         destRect.w = destRect.h = 64;
 
         angle = theta;
+    }
+
+    void update(double deltaTime) override{
+        destRect.x = position.x - Game::camera.x;
+        destRect.y = position.y - Game::camera.y;
     }
 
     void draw() override{

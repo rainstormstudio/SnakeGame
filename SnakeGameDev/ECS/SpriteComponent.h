@@ -1,5 +1,6 @@
 #pragma once
 #include "../Graphics.h"
+#include "../Game.h"
 #include "Components.h"
 #include "Animation.h"
 #include <map>
@@ -63,8 +64,8 @@ public:
         }
         srcRect.y = animIndex * transform->height;
 
-        destRect.x = static_cast<int>(round(transform->position.x));
-        destRect.y = static_cast<int>(round(transform->position.y));
+        destRect.x = static_cast<int>(round(transform->position.x)) - Game::camera.x;
+        destRect.y = static_cast<int>(round(transform->position.y)) - Game::camera.y;
         destRect.w = transform->width * transform->scale;
         destRect.h = transform->height * transform->scale;
     }
