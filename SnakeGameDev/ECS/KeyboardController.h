@@ -21,12 +21,10 @@ public:
                 case SDLK_w:
                     transform->velocity.y = -1;
                     sprite->play("MoveBack");
-                    sprite->spriteFlip = SDL_FLIP_NONE;
                     break;
                 case SDLK_s:
                     transform->velocity.y = 1;
                     sprite->play("MoveFront");
-                    sprite->spriteFlip = SDL_FLIP_NONE;
                     break;
                 case SDLK_a:
                     transform->velocity.x = -1;
@@ -36,7 +34,6 @@ public:
                 case SDLK_d:
                     transform->velocity.x = 1;
                     sprite->play("MoveSide");
-                    sprite->spriteFlip = SDL_FLIP_NONE;
                     break;
                 default:
                     break;
@@ -54,7 +51,7 @@ public:
                     break;
                 case SDLK_a:
                     transform->velocity.x = 0;
-                    // sprite->spriteFlip = SDL_FLIP_NONE;
+                    sprite->spriteFlip = SDL_FLIP_NONE;
                     break;
                 case SDLK_d:
                     transform->velocity.x = 0;
