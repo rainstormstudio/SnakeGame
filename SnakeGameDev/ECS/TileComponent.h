@@ -19,69 +19,33 @@
 
 class TileComponent : public Component{
 public:
-    TransformComponent *transform;
-    SpriteComponent *sprite;
-
-    SDL_Rect tileRect;
-    int tileID;
-    std::string path;
+    SDL_Texture* texture;
+    SDL_Rect srcRect, destRect;
+    int angle;
 
     TileComponent() = default;
 
-    TileComponent(int x, int y, int w, int h, int id){
-        tileRect.x = x;
-        tileRect.y = y;
-        tileRect.w = w;
-        tileRect.h = h;
-        tileID = id;
+    ~TileComponent(){
+        SDL_DestroyTexture(texture);
     }
 
-    void init() override{
-        entity->addComponent<TransformComponent>(tileRect.x, tileRect.y, 0, tileRect.w, tileRect.h, 1);
-        transform = &entity->getComponent<TransformComponent>();
+    TileComponent(int srcX, int srcY, int posX, int posY, int theta, std::string path){
+        texture = Graphics::loadTexture(path);
+        srcRect.x = srcX;
+        srcRect.y = srcY;
+        srcRect.w = srcRect.h = 32;
 
-        switch(tileID){
-        case DIRT:
-            path = "assets/dirt.png";
-            break;
-        case GRASS:
-            path = "assets/grass.png";
-            break;
-        case BORDER_UP:
-            path = "assets/border.png";
-            transform->angle = 0.0f;
-            break;
-        case BORDER_DOWN:
-            path = "assets/border.png";
-            transform->angle = 180.0f;
-            break;
-        case BORDER_LEFT:
-            path = "assets/border.png";
-            transform->angle = 270.0f;
-            break;
-        case BORDER_RIGHT:
-            path = "assets/border.png";
-            transform->angle = 90.0f;
-            break;
-        case BORDER_CORNER_TOPLEFT:
-            path = "assets/border-corner.png";
-            transform->angle = 0.0f;
-            break;
-        case BORDER_CORNER_TOPRIGHT:
-            path = "assets/border-corner.png";
-            transform->angle = 90.0f;
-            break;
-        case BORDER_CORNER_BOTTOMLEFT:
-            path = "assets/border-corner.png";
-            transform->angle = 270.0f;
-            break;
-        case BORDER_CORNER_BOTTOMRIGHT:
-            path = "assets/border-corner.png";
-            transform->angle = 180.0f;
-            break;
-        }
+        destRect.x = posX;
+        destRect.y = posY;
+        destRect.w = destRect.h = 32;
 
-        entity->addComponent<SpriteComponent>(path);
-        sprite = &entity->getComponent<SpriteComponent>();
+        angle = theta;
     }
+
+    void draw() override{
+        SDL_Point center;
+        center.x = center.y = 32 / 2;
+        Graphics::drawTexture(texture, srcRect, destRect, angle, center, SDL_FLIP_NONE);
+    }
+
 };

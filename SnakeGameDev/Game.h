@@ -22,5 +22,5 @@ public:
     ~Game();
     void update(double deltaTime);
     void render();
-    static void addTile(int id, int x, int y);
+    static void addTile(int srcX, int srcY, int posX, int posY, int theta);
 };

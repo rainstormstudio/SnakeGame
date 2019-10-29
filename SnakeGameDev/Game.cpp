@@ -9,6 +9,7 @@ SDL_Event Game::event;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 std::vector<ColliderComponent*> Game::colliders;
+std::string mapFile = "assets/map.png";
 
 Map* map;
 
@@ -93,8 +94,8 @@ void Game::render(){
     gfx->render();
 }
 
-void Game::addTile(int id, int x, int y){
+void Game::addTile(int srcX, int srcY, int posX, int posY, int theta){
     auto& tile(manager.addEntity());
-    tile.addComponent<TileComponent>(x, y, 32, 32, id);
+    tile.addComponent<TileComponent>(srcX, srcY, posX, posY, theta, mapFile);
     tile.addGroup(groupMap);
 }

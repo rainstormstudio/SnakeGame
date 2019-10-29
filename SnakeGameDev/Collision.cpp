@@ -17,7 +17,7 @@ bool Collision::AABBbox(const SDL_Rect &rectA, const SDL_Rect &rectB){
 bool Collision::AABBbox(const ColliderComponent &colliderA, const ColliderComponent &colliderB){
     bool collided = false;
     if (AABBbox(colliderA.collider, colliderB.collider)){
-        std::cout << colliderA.tag << " hit: " << colliderB.tag << std::endl;
+        // std::cout << colliderA.tag << " hit: " << colliderB.tag << std::endl;
         collided = true;
     }
     return collided;
