@@ -45,7 +45,7 @@ public:
     }
 
     void draw(){
-        SDL_Point center = {0, 0};
+        SDL_Point center = {collider.w / 2, collider.h / 2};
         Graphics::drawTexture(texture, srcRect, destRect, 0, center, SDL_FLIP_NONE);
     }
 };

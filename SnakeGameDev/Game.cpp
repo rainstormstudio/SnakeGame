@@ -6,7 +6,7 @@
 
 Manager manager;
 SDL_Event Game::event;
-SDL_Rect Game::camera = {0, 0, 800, 600};
+SDL_Rect Game::camera = {0, 0, 800, 640};
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 
