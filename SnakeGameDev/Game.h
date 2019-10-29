@@ -17,12 +17,16 @@ private:
 
 public:
     static SDL_Event event;
-    static std::vector<ColliderComponent*> colliders;
     static SDL_Rect camera;
+    enum groupLabels : std::size_t{
+        groupMap,
+        groupPlayers,
+        groupEnemies,
+        groupColliders
+    };
 
     Game();
     ~Game();
     void update(double deltaTime);
     void render();
-    static void addTile(int srcX, int srcY, int posX, int posY, int theta);
 };
