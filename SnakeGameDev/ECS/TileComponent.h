@@ -6,17 +6,6 @@
 #include "SDL2/SDL.h"
 #include <string>
 
-#define DIRT                        0
-#define GRASS                       1
-#define BORDER_UP                   2
-#define BORDER_DOWN                 3
-#define BORDER_LEFT                 4
-#define BORDER_RIGHT                5
-#define BORDER_CORNER_TOPLEFT       6
-#define BORDER_CORNER_TOPRIGHT      7
-#define BORDER_CORNER_BOTTOMLEFT    8
-#define BORDER_CORNER_BOTTOMRIGHT   9
-
 class TileComponent : public Component{
 public:
     SDL_Texture* texture;
@@ -30,17 +19,17 @@ public:
         SDL_DestroyTexture(texture);
     }
 
-    TileComponent(int srcX, int srcY, int posX, int posY, int theta, std::string path){
+    TileComponent(int srcX, int srcY, int posX, int posY, int theta, int tileSize, int tileScale, std::string path){
         position.x = posX;
         position.y = posY;
         texture = Graphics::loadTexture(path);
         srcRect.x = srcX;
         srcRect.y = srcY;
-        srcRect.w = srcRect.h = 32;
+        srcRect.w = srcRect.h = tileSize;
 
         destRect.x = posX;
         destRect.y = posY;
-        destRect.w = destRect.h = 64;
+        destRect.w = destRect.h = tileSize * tileScale;
 
         angle = theta;
     }

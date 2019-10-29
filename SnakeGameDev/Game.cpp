@@ -9,21 +9,13 @@ SDL_Event Game::event;
 SDL_Rect Game::camera = {0, 0, 800, 600};
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
-std::vector<ColliderComponent*> Game::colliders;
-std::string mapFile = "assets/map.png";
 
 Map* map;
 
-enum groupLabels : std::size_t{
-    groupMap,
-    groupPlayers,
-    groupEnemies,
-    groupColliders
-};
-
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
+auto& tiles(manager.getGroup(Game::groupMap));
+auto& players(manager.getGroup(Game::groupPlayers));
+auto& enemies(manager.getGroup(Game::groupEnemies));
+auto& colliders(manager.getGroup(Game::groupColliders));
 
 Game::Game(){
     SCREEN_WIDTH = 800;
@@ -37,9 +29,10 @@ Game::Game(){
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     printf("graphics initialized\n");
-    Map::loadMap("levels/level.map", 25, 20);
+    map = new Map("assets/map.png", 2, 32);
+    map->loadMap("levels/level.map", 25, 20);
     printf("map initialized\n");
-    player.addComponent<TransformComponent>(400, 320, 64, 32, 32, 2);
+    player.addComponent<TransformComponent>(400, 320, 64 * 2, 32, 32, 2);
     player.addComponent<SpriteComponent>("assets/player-anim.png", true);
     player.addComponent<ColliderComponent>("player");
     player.addComponent<KeyboardController>();
@@ -74,8 +67,18 @@ Game::Game(){
 Game::~Game(){}
 
 void Game::update(double deltaTime){
+    SDL_Rect playerCollider = player.getComponent<ColliderComponent>().collider;
+    Vector2D playerPosition = player.getComponent<TransformComponent>().position;
+
     manager.refresh();
     manager.update(deltaTime);
+
+    for (auto& c : colliders){
+        SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
+        if (Collision::AABBbox(cCollider, playerCollider)){
+            player.getComponent<TransformComponent>().position = playerPosition;
+        }
+    }
 
     camera.x = player.getComponent<TransformComponent>().position.x - 400;
     camera.y = player.getComponent<TransformComponent>().position.y - 320;
@@ -91,6 +94,9 @@ void Game::render(){
     for (auto& tile : tiles){
         tile->draw();
     }
+    for (auto& collider : colliders){
+        collider->draw();
+    }
     for (auto& play : players){
         play->draw();
     }
@@ -98,10 +104,4 @@ void Game::render(){
         enemy->draw();
     }
     gfx->render();
-}
-
-void Game::addTile(int srcX, int srcY, int posX, int posY, int theta){
-    auto& tile(manager.addEntity());
-    tile.addComponent<TileComponent>(srcX, srcY, posX, posY, theta, mapFile);
-    tile.addGroup(groupMap);
 }
