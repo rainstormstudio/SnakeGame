@@ -1,6 +1,8 @@
 #pragma once
 #include "../Graphics.h"
 #include "Components.h"
+#include "Animation.h"
+#include <map>
 
 class SpriteComponent : public Component{
 private:
@@ -13,16 +15,28 @@ private:
     int aniSpeed = 100;
 
 public:
+    int animIndex = 0;
+    std::map<const char*, Animation> animations;
+    SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
+
     SpriteComponent() = default;
 
     SpriteComponent(std::string path){
         setTexture(path);
     }
 
-    SpriteComponent(std::string path, int nFrames, int mSpeed){
-        animated = true;
-        frames = nFrames;
-        aniSpeed = mSpeed;
+    SpriteComponent(std::string path, bool isAnimated){
+        animated = isAnimated;
+
+        Animation moveFront = Animation(0, 4, 150);
+        Animation moveBack = Animation(1, 4, 150);
+        Animation moveSide = Animation(2, 4, 150);
+
+        animations.emplace("MoveFront", moveFront);
+        animations.emplace("MoveBack", moveBack);
+        animations.emplace("MoveSide", moveSide);
+
+        play("MoveFront");
         setTexture(path);
     }
 
@@ -47,6 +61,8 @@ public:
         if (animated){
             srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / aniSpeed) % frames);
         }
+        srcRect.y = animIndex * transform->height;
+
         destRect.x = static_cast<int>(round(transform->position.x));
         destRect.y = static_cast<int>(round(transform->position.y));
         destRect.w = transform->width * transform->scale;
@@ -57,6 +73,12 @@ public:
         SDL_Point center;
         center.x = srcRect.w / 2;
         center.y = srcRect.h / 2;
-        Graphics::drawTexture(texture, srcRect, destRect, transform->angle, center, SDL_FLIP_NONE);
+        Graphics::drawTexture(texture, srcRect, destRect, transform->angle, center, spriteFlip);
+    }
+
+    void play(const char* animName){
+        frames = animations[animName].frames;
+        animIndex = animations[animName].index;
+        aniSpeed = animations[animName].speed;
     }
 };

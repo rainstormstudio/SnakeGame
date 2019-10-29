@@ -2,11 +2,11 @@
 1571374792 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/main.cpp
 	"Game.h"
 
-1572186283 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.h
+1572191852 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.h
 	"Graphics.h"
 	<vector>
 
-1572143003 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.h
+1572191852 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_ttf.h>
@@ -17,14 +17,14 @@
 	<SDL_mixer.h>
 	<string>
 
-1572187947 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.cpp
+1572308204 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Game.cpp
 	"Game.h"
 	"ECS/Components.h"
 	"Map.h"
 	"Vector2D.h"
 	"Collision.h"
 
-1572143356 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.cpp
+1572191852 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Graphics.cpp
 	"Graphics.h"
 
 1571745647 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/GameObject.h
@@ -40,11 +40,11 @@
 1571714818 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Keyboard.cpp
 	"Keyboard.h"
 
-1572186283 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Map.h
+1572191852 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Map.h
 	"Graphics.h"
 	<string>
 
-1572186283 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Map.cpp
+1572191852 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Map.cpp
 	"Map.h"
 	"Game.h"
 	<fstream>
@@ -59,7 +59,7 @@
 1571793530 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Components.h
 	"ECS.h"
 
-1572143003 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/Components.h
+1572191852 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/Components.h
 	"ECS.h"
 	"TransformComponent.h"
 	"SpriteComponent.h"
@@ -67,51 +67,55 @@
 	"ColliderComponent.h"
 	"TileComponent.h"
 
-1572188099 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/ECS.h
+1572191852 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/ECS.h
 	<vector>
 	<memory>
 	<algorithm>
 	<bitset>
 	<array>
 
-1572184576 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/TransformComponent.h
+1572191852 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/TransformComponent.h
 	"Components.h"
 	"../Vector2D.h"
 
-1572188868 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/SpriteComponent.h
+1572308412 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/SpriteComponent.h
 	"../Graphics.h"
 	"Components.h"
+	"Animation.h"
+	<map>
 
-1571959337 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Vector2D.h
+1572191852 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Vector2D.h
 	<iostream>
 
-1571959337 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Vector2D.cpp
+1572191852 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Vector2D.cpp
 	"Vector2D.h"
 
-1571952566 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/KeyboardController.h
+1572308412 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/KeyboardController.h
 	"ECS.h"
 	"Components.h"
 	"../Game.h"
 
-1572143003 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Collision.cpp
+1572191852 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Collision.cpp
 	"Collision.h"
 	"ECS/ColliderComponent.h"
 
-1572143003 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Collision.h
+1572191852 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/Collision.h
 	"SDL2/SDL.h"
 
-1572143003 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/ColliderComponent.h
+1572191852 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/ColliderComponent.h
 	<string>
 	"SDL2/SDL.h"
 	"Components.h"
 
-1572186662 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/TileComponent.h
+1572191852 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/TileComponent.h
 	"ECS.h"
 	"TransformComponent.h"
 	"SpriteComponent.h"
 	"SDL2/SDL.h"
 	<string>
 
-1572187947 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/ECS.cpp
+1572191852 source:/home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/ECS.cpp
 	"ECS.h"
+
+1572308204 /home/daniel/Documents/workplace/SnakeGame/SnakeGameDev/ECS/Animation.h
 

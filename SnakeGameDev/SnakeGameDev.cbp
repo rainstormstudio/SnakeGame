@@ -40,6 +40,7 @@
 		</Linker>
 		<Unit filename="Collision.cpp" />
 		<Unit filename="Collision.h" />
+		<Unit filename="ECS/Animation.h" />
 		<Unit filename="ECS/ColliderComponent.h" />
 		<Unit filename="ECS/Components.h" />
 		<Unit filename="ECS/ECS.cpp" />
