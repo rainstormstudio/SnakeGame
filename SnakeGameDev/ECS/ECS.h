@@ -87,8 +87,12 @@ public:
 
     template <typename T, typename ... TArgs>
     T& addComponent(TArgs && ... mArgs){
-        T* c(new T(std::forward<TArgs>(mArgs)...));
+        printf(">>> addcomponent start\n");
+        T* c = new T(std::forward<TArgs>(mArgs)...);
+        printf("c address = %p\n", c);
         c->entity = this;
+        printf("c->entity address = %p\n", c->entity);
+        printf("c address = %p\n", c);
         std::unique_ptr<Component> uPtr{c};
         components.emplace_back(std::move(uPtr));
 
@@ -96,6 +100,7 @@ public:
         componentBitSet[getComponentTypeID<T>()] = true;
 
         c->init();
+        printf(">>> addcomponent end\n");
         return *c;
     }
 
@@ -144,7 +149,7 @@ public:
 
     Entity& addEntity(){
         Entity* e = new Entity(*this);
-        std::unique_ptr<Entity> uPtr(e);
+        std::unique_ptr<Entity> uPtr {e};
         entities.emplace_back(std::move(uPtr));
         return *e;
     }

@@ -20,7 +20,7 @@ auto& colliders(manager.getGroup(Game::groupColliders));
 Game::Game(){
     SCREEN_WIDTH = 800;
     SCREEN_HEIGHT = 640;
-    FPS = 120;
+    FPS = 30;
     double frameDelay = 1000 / FPS;
     Uint32 frameA;
     Uint32 frameB;
@@ -34,7 +34,13 @@ Game::Game(){
     printf("map initialized\n");
     player.addComponent<TransformComponent>(400, 320, 64 * 2, 32, 32, 2);
     player.addComponent<SpriteComponent>("assets/player-anim.png", true);
+    printf("========================================\n");
+    printf("collider component ready for initialization\n");
     player.addComponent<ColliderComponent>("player");
+    printf("collider component address = %i\n",
+        &(player.getComponent<ColliderComponent>()));
+    printf("collider component added\n");
+    printf("----------------------------------------\n");
     player.addComponent<KeyboardController>();
     player.addGroup(groupPlayers);
     printf("player initialized\n");
@@ -60,6 +66,7 @@ Game::Game(){
         render();
 
         // printf(" FPS: %.3f\n", (1000.0f / (frameTime + sleepTime)));
+        //printf("====================================================\n");
     }
     printf("the while loop is over");
 }

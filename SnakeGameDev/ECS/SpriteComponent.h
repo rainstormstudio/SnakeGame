@@ -54,8 +54,8 @@ public:
         srcRect.x = srcRect.y = 0;
         srcRect.w = transform->width;
         srcRect.h = transform->height;
-        destRect.w = transform->width * transform->scale;
-        destRect.h = transform->height * transform->scale;
+        // destRect.w = transform->width * transform->scale;
+        // destRect.h = transform->height * transform->scale;
     }
 
     void update(double deltaTime) override{

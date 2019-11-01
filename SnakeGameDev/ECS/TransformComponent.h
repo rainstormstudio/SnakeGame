@@ -14,7 +14,9 @@ public:
     double angle;
 
     TransformComponent(){
-        TransformComponent(0, 0, 32, 32, 32, 1);
+        position.x = 0; position.y = 0; speed = 32;
+        width = 32; height = 32; scale = 1;
+        angle = 0.0f;
     }
     TransformComponent(int x, int y, int initSpeed,
                        int initWidth, int initHeight, int initScale){
