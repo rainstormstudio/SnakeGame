@@ -20,7 +20,7 @@ auto& colliders(manager.getGroup(Game::groupColliders));
 Game::Game(){
     SCREEN_WIDTH = 800;
     SCREEN_HEIGHT = 640;
-    FPS = 30;
+    FPS = 120;
     double frameDelay = 1000 / FPS;
     Uint32 frameA;
     Uint32 frameB;
