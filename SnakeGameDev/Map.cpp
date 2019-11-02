@@ -5,8 +5,8 @@
 #include "ECS/Components.h"
 extern Manager manager;
 
-Map::Map(std::string mfp, int ms, int ts){
-    mapFilePath = mfp;
+Map::Map(std::string initTextureID, int ms, int ts){
+    textureID = initTextureID;
     mapScale = ms;
     tileSize = ts;
     scaledSize = ms * ts;
@@ -52,6 +52,6 @@ void Map::loadMap(std::string path, int sizeX, int sizeY){
 
 void Map::addTile(int srcX, int srcY, int posX, int posY, int theta){
     auto& tile(manager.addEntity());
-    tile.addComponent<TileComponent>(srcX, srcY, posX, posY, theta, tileSize, mapScale, mapFilePath);
+    tile.addComponent<TileComponent>(srcX, srcY, posX, posY, theta, tileSize, mapScale, textureID);
     tile.addGroup(Game::groupMap);
 }

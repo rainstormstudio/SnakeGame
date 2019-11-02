@@ -7,6 +7,7 @@
 Manager manager;
 SDL_Event Game::event;
 SDL_Rect Game::camera = {0, 0, 800, 640};
+AssetManager* Game::assets = new AssetManager(&manager);
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 
@@ -29,11 +30,15 @@ Game::Game(){
 
     gfx = new Graphics("SnakeGame", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     printf("graphics initialized\n");
-    map = new Map("assets/map.png", 2, 32);
+
+    assets->addTexture("map", "assets/map.png");
+    assets->addTexture("player", "assets/player-anim.png");
+
+    map = new Map("map", 2, 32);
     map->loadMap("levels/level.map", 25, 20);
     printf("map initialized\n");
     player.addComponent<TransformComponent>(400, 320, 64 * 2, 32, 32, 2);
-    player.addComponent<SpriteComponent>("assets/player-anim.png", true);
+    player.addComponent<SpriteComponent>("player", true);
     player.addComponent<ColliderComponent>("player");
     player.addComponent<KeyboardController>();
     player.addGroup(groupPlayers);

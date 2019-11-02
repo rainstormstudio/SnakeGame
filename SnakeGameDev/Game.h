@@ -1,6 +1,7 @@
 #pragma once
 #include "Graphics.h"
 #include <vector>
+#include "AssetsManager.h"
 
 class ColliderComponent;
 
@@ -18,6 +19,7 @@ private:
 public:
     static SDL_Event event;
     static SDL_Rect camera;
+    static AssetManager* assets;
     enum groupLabels : std::size_t{
         groupMap,
         groupPlayers,

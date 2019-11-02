@@ -1,5 +1,6 @@
 #pragma once
 #include "../Graphics.h"
+#include "../AssetsManager.h"
 #include "../Game.h"
 #include "Components.h"
 #include "Animation.h"
@@ -22,11 +23,11 @@ public:
 
     SpriteComponent() = default;
 
-    SpriteComponent(std::string path){
-        setTexture(path);
+    SpriteComponent(std::string id){
+        setTexture(id);
     }
 
-    SpriteComponent(std::string path, bool isAnimated){
+    SpriteComponent(std::string id, bool isAnimated){
         animated = isAnimated;
 
         Animation moveFront = Animation(0, 4, 150);
@@ -38,15 +39,14 @@ public:
         animations.emplace("MoveSide", moveSide);
 
         play("MoveFront");
-        setTexture(path);
+        setTexture(id);
     }
 
     ~SpriteComponent(){
-        SDL_DestroyTexture(texture);
     }
 
-    void setTexture(std::string path){
-        texture = Graphics::loadTexture(path);
+    void setTexture(std::string id){
+        texture = Game::assets->getTexture(id);
     }
 
     void init() override{
