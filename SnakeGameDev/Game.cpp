@@ -34,16 +34,9 @@ Game::Game(){
     printf("map initialized\n");
     player.addComponent<TransformComponent>(400, 320, 64 * 2, 32, 32, 2);
     player.addComponent<SpriteComponent>("assets/player-anim.png", true);
-    printf("========================================\n");
-    printf("collider component ready for initialization\n");
     player.addComponent<ColliderComponent>("player");
-    printf("collider component address = %i\n",
-        &(player.getComponent<ColliderComponent>()));
-    printf("collider component added\n");
-    printf("----------------------------------------\n");
     player.addComponent<KeyboardController>();
     player.addGroup(groupPlayers);
-    printf("player initialized\n");
 
     printf("========================================\n");
 
