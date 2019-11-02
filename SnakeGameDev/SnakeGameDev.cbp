@@ -38,6 +38,8 @@
 			<Add option="-lSDL2_ttf" />
 			<Add option="-lSDL2_mixer" />
 		</Linker>
+		<Unit filename="AssetsManager.cpp" />
+		<Unit filename="AssetsManager.h" />
 		<Unit filename="Collision.cpp" />
 		<Unit filename="Collision.h" />
 		<Unit filename="ECS/Animation.h" />
@@ -46,6 +48,7 @@
 		<Unit filename="ECS/ECS.cpp" />
 		<Unit filename="ECS/ECS.h" />
 		<Unit filename="ECS/KeyboardController.h" />
+		<Unit filename="ECS/ProjectileComponent.h" />
 		<Unit filename="ECS/SpriteComponent.h" />
 		<Unit filename="ECS/TileComponent.h" />
 		<Unit filename="ECS/TransformComponent.h" />

@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "ECS/Components.h"
+#include "AssetsManager.h"
 #include "Map.h"
 #include "Vector2D.h"
 #include "Collision.h"
@@ -17,6 +18,7 @@ auto& tiles(manager.getGroup(Game::groupMap));
 auto& players(manager.getGroup(Game::groupPlayers));
 auto& enemies(manager.getGroup(Game::groupEnemies));
 auto& colliders(manager.getGroup(Game::groupColliders));
+auto& projectiles(manager.getGroup(Game::groupPlayers));
 
 Game::Game(){
     SCREEN_WIDTH = 800;
@@ -33,6 +35,7 @@ Game::Game(){
 
     assets->addTexture("map", "assets/map.png");
     assets->addTexture("player", "assets/player-anim.png");
+    assets->addTexture("projectile", "assets/projectile.png");
 
     map = new Map("map", 2, 32);
     map->loadMap("levels/level.map", 25, 20);
@@ -42,7 +45,8 @@ Game::Game(){
     player.addComponent<ColliderComponent>("player");
     player.addComponent<KeyboardController>();
     player.addGroup(groupPlayers);
-
+    printf("player initialized\n");
+    assets->createProjectile(Vector2D(10, 10), 200, 96, "projectile");
     printf("========================================\n");
 
     frameA = SDL_GetTicks();
@@ -84,7 +88,15 @@ void Game::update(double deltaTime){
             player.getComponent<TransformComponent>().position = playerPosition;
         }
     }
-
+/*
+    for (auto& p : projectiles){
+        if (Collision::AABBbox(player.getComponent<ColliderComponent>().collider,
+        p->getComponent<ColliderComponent>().collider)){
+            printf("hit player!\n");
+            p->destroy();
+        }
+    }
+*/
     camera.x = player.getComponent<TransformComponent>().position.x - 400;
     camera.y = player.getComponent<TransformComponent>().position.y - 320;
 
@@ -107,6 +119,9 @@ void Game::render(){
     }
     for (auto& enemy : enemies){
         enemy->draw();
+    }
+    for (auto& p : projectiles){
+        p->draw();
     }
     gfx->render();
 }

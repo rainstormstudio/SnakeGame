@@ -1,8 +1,8 @@
 #pragma once
 #include "Graphics.h"
 #include <vector>
-#include "AssetsManager.h"
 
+class AssetManager;
 class ColliderComponent;
 
 class Game{
@@ -24,7 +24,8 @@ public:
         groupMap,
         groupPlayers,
         groupEnemies,
-        groupColliders
+        groupColliders,
+        groupProjectiles
     };
 
     Game();
