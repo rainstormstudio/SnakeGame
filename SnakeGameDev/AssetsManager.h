@@ -14,7 +14,7 @@ public:
     ~AssetManager();
 
     // game objects
-    void createProjectile(Vector2D position, int range, int speed, std::string id);
+    void createProjectile(Vector2D position, Vector2D velocity, int range, double speed, std::string id);
 
     // texture management
     void addTexture(std::string id, std::string path);

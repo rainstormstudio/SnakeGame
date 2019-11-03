@@ -14,8 +14,6 @@ private:
     Graphics* gfx;
 
     bool main_loop;
-
-
 public:
     static SDL_Event event;
     static SDL_Rect camera;

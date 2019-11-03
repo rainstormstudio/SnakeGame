@@ -59,15 +59,18 @@ public:
     }
 
     void update(double deltaTime) override{
+        printf("sprite update ready\n");
         if (animated){
+            printf("aniSpeed = %i\n", frames);
             srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / aniSpeed) % frames);
         }
         srcRect.y = animIndex * transform->height;
-
+        printf("phase 2 ... \n");
         destRect.x = static_cast<int>(round(transform->position.x)) - Game::camera.x;
         destRect.y = static_cast<int>(round(transform->position.y)) - Game::camera.y;
         destRect.w = transform->width * transform->scale;
         destRect.h = transform->height * transform->scale;
+        printf("sprite updated\n");
     }
 
     void draw() override{

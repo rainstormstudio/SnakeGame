@@ -12,8 +12,6 @@ public:
     TransformComponent* transform;
 
     ColliderComponent(std::string initTag){
-        printf("initializing ...\n");
-        printf("colliderComponent address = %p\n", this);
         tag = initTag;
         collider.x = 0;
         collider.y = 0;
@@ -21,17 +19,10 @@ public:
     }
 
     ColliderComponent(std::string initTag, int posX, int posY, int size){
-        printf("initializing ... 2nd ...\n");
         tag = initTag;
         collider.x = posX;
         collider.y = posY;
         collider.h = collider.w = size;
-        printf("  collider collider.w = %i\n", collider.w);
-        printf("  collider collider.h = %i\n", collider.h);
-        printf("  collider collider.x = %i\n", collider.x);
-        printf("  collider collider.y = %i\n", collider.y);
-        printf("  collider address = %p\n", &collider);
-        printf("this address = %p\n", this);
     }
 
     void init() override{
@@ -43,17 +34,6 @@ public:
         texture = Graphics::loadTexture("assets/collider.png");
         srcRect = {0, 0, 32, 32};
         destRect = {collider.x, collider.y, collider.w, collider.h};
-        printf("init\n");
-        printf("  collider collider.w = %i\n", collider.w);
-        printf("  collider collider.h = %i\n", collider.h);
-        printf("  collider collider.x = %i\n", collider.x);
-        printf("  collider collider.y = %i\n", collider.y);
-        printf("  collider address = %p\n", &collider);
-        printf("  collider destRect.w = %i\n", destRect.w);
-        printf("  collider destRect.h = %i\n", destRect.h);
-        printf("  collider destRect.x = %i\n", destRect.x);
-        printf("  collider destRect.y = %i\n", destRect.y);
-        printf("this address = %p\n", this);
     }
 
     void update(double deltaTime) override{
@@ -66,22 +46,11 @@ public:
         destRect.x = collider.x - Game::camera.x;
         destRect.y = collider.y - Game::camera.y;
         destRect.w = transform->width * transform->scale;
-        destRect.h = transform->height * transform->scale;/*
-        printf("update ...\n");
-        printf("collider destRect.w = %i\n", destRect.w);
-        printf("collider destRect.h = %i\n", destRect.h);
-        printf("collider destRect.x = %i\n", destRect.x);
-        printf("collider destRect.y = %i\n", destRect.y);*/
+        destRect.h = transform->height * transform->scale;
     }
 
     void draw() override{
         SDL_Point center = {collider.w / 2, collider.h / 2};
         Graphics::drawTexture(texture, srcRect, destRect, 0, center, SDL_FLIP_NONE);
-        /*printf("draw ...\n");
-        printf("collider destRect.w = %i\n", destRect.w);
-        printf("collider destRect.h = %i\n", destRect.h);
-        printf("collider destRect.x = %i\n", destRect.x);
-        printf("collider destRect.y = %i\n", destRect.y);
-        printf("collider drew\n");*/
     }
 };

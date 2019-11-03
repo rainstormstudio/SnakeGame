@@ -1,17 +1,15 @@
 #include "AssetsManager.h"
 #include "ECS/Components.h"
 
-AssetManager::AssetManager(Manager* mng) : manager(mng){
-
-}
+AssetManager::AssetManager(Manager* mng) : manager(mng){}
 
 AssetManager::~AssetManager(){}
 
-void AssetManager::createProjectile(Vector2D position, int range, int speed, std::string id){
+void AssetManager::createProjectile(Vector2D position, Vector2D velocity, int range, double speed, std::string id){
     auto& projectile(manager->addEntity());
-    projectile.addComponent<TransformComponent>(position.x, position.y, 0, 32, 32, 1);
+    projectile.addComponent<TransformComponent>(position.x, position.y, speed, 32, 32, 1);
     projectile.addComponent<SpriteComponent>(id, false);
-    projectile.addComponent<ProjectileComponent>(range, speed);
+    projectile.addComponent<ProjectileComponent>(range, speed, velocity);
     projectile.addComponent<ColliderComponent>("projectile");
     projectile.addGroup(Game::groupProjectiles);
     printf("projectile created\n");

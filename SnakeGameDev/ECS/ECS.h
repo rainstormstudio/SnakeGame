@@ -16,12 +16,13 @@ using ComponentID = std::size_t;
 using Group = std::size_t;
 
 inline ComponentID getNewComponentTypeID(){
-    static ComponentID lastID = 0;
+    static ComponentID lastID = 0u;
     return lastID++;
 }
 
 template <typename T>
 inline ComponentID getComponentTypeID() noexcept{
+    static_assert (std::is_base_of<Component, T>::value, "");
     static ComponentID typeID = getNewComponentTypeID();
     return typeID;
 }
@@ -87,12 +88,8 @@ public:
 
     template <typename T, typename ... TArgs>
     T& addComponent(TArgs && ... mArgs){
-        printf(">>> addcomponent start\n");
         T* c = new T(std::forward<TArgs>(mArgs)...);
-        printf("c address = %p\n", c);
         c->entity = this;
-        printf("c->entity address = %p\n", c->entity);
-        printf("c address = %p\n", c);
         std::unique_ptr<Component> uPtr{c};
         components.emplace_back(std::move(uPtr));
 
@@ -100,7 +97,6 @@ public:
         componentBitSet[getComponentTypeID<T>()] = true;
 
         c->init();
-        printf(">>> addcomponent end\n");
         return *c;
     }
 
